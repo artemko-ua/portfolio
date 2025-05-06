@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+        <html lang="uk">
+        <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Портфоліо</title>
+            <link rel="stylesheet" href="/portfolio-website/assets/css/style.css">
+        </head>
+        <body>
+            <header class="animated">
+                <h1>Ласкаво просимо до мого <span class="glow">портфоліо</span></h1>
+                <p class="cursor">Привіт, я Артемко! Я розробник і етичний хакер, який спеціалізується на пентестингу та створенні безпечних систем.</p>
+            </header>
+            
+            <nav>
+                <ul>
+                    <li><a href="#about">Про мене</a></li>
+                    <li><a href="#skills">Навички</a></li>
+                    <li><a href="#projects">Проєкти</a></li>
+                    <li><a href="#contact">Контакти</a></li>
+                </ul>
+            </nav>
+            
+            <section id="about" class="slide-in">
+                <h2>Про мене</h2>
+                <div class="terminal">
+                    <div class="terminal-header">
+                        <div class="terminal-circle circle-red"></div>
+                        <div class="terminal-circle circle-yellow"></div>
+                        <div class="terminal-circle circle-green"></div>
+                        <div class="terminal-title">artemko@system:~</div>
+                    </div>
+                    <div class="terminal-content">
+                        <p><span class="terminal-prompt">artemko@system:~$</span> cat about.txt</p>
+                        <p>Я — розробник і етичний хакер, що спеціалізується на пентестингу, написанні експлойтів і розробці безпечних систем. Володію середнім рівнем Python, активно поглиблюю знання C та Assembly, працюю з низькорівневими структурами і створюю власну Unix-подібну ОС з нуля.</p>
+                        <p><span class="terminal-prompt">artemko@system:~$</span> echo "Моя мета — не просто кодити, а будувати системи, що тримають удар."</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section id="skills" class="slide-in">
+                <h2>Навички</h2>
+                <ul class="skills">
+                    <li>Безпека додатків</li>
+                    <li>Пошук та експлуатація вразливостей</li>
+                    <li>Зворотна інженерія</li>
+                    <li>Розробка скриптів для автоматизації пентесту</li>
+                    <li>Створення експлойтів під Linux/Windows</li>
+                    <li>Глибоке розуміння архітектури ОС</li>
+                    <li>Низькорівневе програмування</li>
+                </ul>
+            </section>
+            
+            <section id="projects" class="slide-in">
+                <h2>Проєкти</h2>
+                <div class="project">
+                    <h3>Проєкт 1: Автоматизація пентесту</h3>
+                    <p>Скрипт для автоматизації пентесту веб-додатків.</p>
+                    <a href="https://github.com/artemko-ua/pentestrix/tree/main">Код проекту</a>
+                    <pre data-language="python"><code>
+import requests
+from bs4 import BeautifulSoup
+import json
+
+def input_def(values):
+    url = input("Enter the URL: ")
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    inputs = soup.find_all('input')
+    
+    for i, input_tag in enumerate(inputs):
+        if i < len(values):
+            input_tag['value'] = values[i]
+    
+    data = {
+        "website": url,
+        "inputs": {input_tag['name']: input_tag['value'] for input_tag in inputs if 'name' in input_tag.attrs}
+    }
+    
+    with open('response.json', 'w') as f:
+        json.dump(data, f, indent=4)
+                    </code></pre>
+                </div>
+                
+                <div class="project">
+                    <h3>Проєкт 2:Магазин програм для розробників на Linux</h3>
+                    <p>Автоматизація завантадження програмного забезпечення для розробників на Linux.</p>
+                    <a href="https://github.com/artemko-ua/DevToolbox-Installer">Код проекту/a>
+                    <pre data-language="python"><code>
+def main():
+    print(ascii_art)
+    print("Please run this script with sudo")
+    
+    package_manager = detect_package_manager()
+    if package_manager == "No package manager detected":
+        print("Error: No supported package manager found on your system")
+        return
+    
+    print(f"Detected package manager: {package_manager}")
+    
+    setup = required_app() 
+    
+    for app in setup:
+        try:
+            print(f"Installing {app}")
+            subprocess.run(f"sudo {package_manager} install -y {app}", 
+                         shell=True, 
+                         stdout=subprocess.PIPE, 
+                         stderr=subprocess.PIPE, 
+                         check=True)
+        except subprocess.CalledProcessError as e:
+            print(f"Error installing {app}: {e}")
+            continue
+
+if __name__ == "__main__":
+    main()
+                    </code></pre>
+                </div>
+                
+                <div class="project">
+                    <h3>Проєкт 3: Unix-подібна ОС</h3>
+                    <p>Розробка Unix-подібної ОС з нуля.</p>
+                    <a href="https://8138e0fb-a7bc-4c59-b38b-71df6d99f75b-00-fenppcq4b1tz.janeway.replit.dev/">Сайт проект де можна ознайомитись детальніше</a>
+                    <pre data-language="c"><code>
+// C snippet for custom OS kernel
+void kernel_main() {
+    char *video_memory = (char *)0xb8000;
+    *video_memory = 'A';
+    // приклад коду бо я не залив в github ще :(
+}
+                    </code></pre>
+                </div>
+            </section>
+            
+            <section id="contact" class="slide-in">
+                <h2>Контакти</h2>
+                <p>Зв'яжіться зі мною через:</p>
+                <ul class="contact-list">
+                    <li><a href="https://github.com/artemko-ua">GitHub</a></li>
+                    <li>Email: <a href="mailto:artem.kent121@gmail.com">artem.kent121@gmail.com</a></li>
+                </ul>
+                
+                <div class="contact-form">
+                    <h3>Напишіть мені</h3>
+                    <form id="contactForm">
+                        <div class="form-group">
+                            <label for="name">Ім'я</label>
+                            <input type="text" id="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Повідомлення</label>
+                            <textarea id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit">Надіслати</button>
+                    </form>
+                </div>
+            </section>
+            
+            <footer>
+                <p>&copy; 2025 Всі права захищені.</p>
+            </footer>
+
+            <script src="/portfolio-website/assets/js/script.js"></script>
+        </body>
+        </html>
